@@ -1,5 +1,6 @@
 {
-  "name": "astro-theme-stone",
+  "name": "avenir",
+  "homepage": "https://balzss.github.io/avenir",
   "type": "module",
   "version": "1.0.0",
   "scripts": {
