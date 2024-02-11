@@ -1,0 +1,142 @@
+---
+const links = [
+  {
+    ref: '01',
+    name: 'Home',
+    href: '/',
+  },
+  {
+    ref: '02',
+    name: 'About',
+    href: '/about',
+  },
+  {
+    ref: '03',
+    name: 'Pricing',
+    href: '/pricing',
+  },
+  {
+    ref: '04',
+    name: 'Contact',
+    href: '/contact',
+  },
+];
+---
+
+<header
+  x-data="{ open: false }"
+  class="transition"
+  :class="{ 'bg-primary-500/10 dark:bg-primary-400/10': open, 'bg-primary-50 dark:bg-primary-950': !(open) }"
+>
+  <div
+    class="mx-auto flex max-w-2xl items-center justify-between px-4 py-4 sm:px-6 sm:py-6 lg:max-w-7xl lg:px-8"
+  >
+    <!-- Brand logo -->
+    <div class="flex">
+      <a
+        href="/"
+        class="focus-visible:outline-primary-950 dark:group-focus-visible:outline-primary-200 rounded-md focus-visible:outline focus-visible:outline-2"
+      >
+        <span class="sr-only">Stone</span>
+        <img
+          class="h-8 w-auto"
+          width="65"
+          height="40"
+          src="/assets/kepek/avenir_logo.png"
+          alt="Stone"
+        />
+      </a>
+    </div>
+
+    <!-- Actions -->
+    <div class="-mr-2 flex items-center space-x-2 sm:space-x-3">
+      <!-- Toggle menu -->
+      <button
+        type="button"
+        class="text-primary-950 dark:text-primary-200 hover:bg-primary-500/10 dark:hover:bg-primary-400/10 ring-primary-950 inline-flex h-14 w-14 items-center justify-center rounded-full transition focus:outline-none focus-visible:ring-2"
+        @click="open = !open"
+        @mousedown="if (open) $event.preventDefault()"
+        aria-controls="website-menu"
+        aria-expanded="false"
+        :aria-expanded="open.toString()"
+      >
+        <span class="sr-only">Toggle menu</span>
+        <svg
+          x-cloak
+          class="h-8 w-8"
+          :class="{ 'hidden': open, 'block': !(open) }"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path d="M19 8H5V10H19V8ZM19 14H5V16H19V14Z"></path>
+        </svg>
+        <svg
+          x-cloak
+          class="h-8 w-8"
+          :class="{ 'block': open, 'hidden': !(open) }"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            d="M12.0007 10.5865L16.9504 5.63672L18.3646 7.05093L13.4149 12.0007L18.3646 16.9504L16.9504 18.3646L12.0007 13.4149L7.05093 18.3646L5.63672 16.9504L10.5865 12.0007L5.63672 7.05093L7.05093 5.63672L12.0007 10.5865Z"
+          ></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Menu content -->
+  <div
+    class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8"
+    id="website-menu"
+    x-cloak
+    x-show="open"
+    x-collapse
+    x-collapse.duration.500ms
+  >
+    <div class="grid grid-cols-1 gap-16 pb-24 pt-6 lg:grid-cols-2 lg:pt-12">
+      <div
+        class="bg-primary-500/10 dark:bg-primary-400/10 hidden items-center justify-center rounded-3xl px-6 py-8 lg:flex"
+      >
+        <p
+          class="text-primary-950/70 dark:text-primary-200/70 max-w-sm text-xl italic leading-loose"
+        >
+          <span class="font-medium">Stone</span> is a premium Astro theme specially designed for
+          Business, Marketing, SaaS and Startup websites.
+        </p>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="divide-primary-900/10 dark:divide-primary-300/10 flex flex-col gap-1 divide-y">
+        {
+          links.map((link) => (
+            <a
+              href={link.href}
+              class="text-primary-950 dark:text-primary-200 group inline-flex py-6 text-3xl font-medium tracking-tight transition focus-visible:outline-none sm:py-8 sm:text-4xl"
+            >
+              <div class="group-focus-visible:outline-primary-950 dark:group-focus-visible:outline-primary-200 flex flex-1 items-center justify-between rounded-3xl group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-2">
+                <div class="flex items-center gap-6">
+                  <span class="text-xs">{link.ref}</span>
+                  <span class="group-hover:underline">{link.name}</span>
+                </div>
+                <svg
+                  class="text-primary-600 dark:text-primary-400 h-6 w-6 sm:h-8 sm:w-8"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z" />
+                </svg>
+              </div>
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+  </div>
+</header>
