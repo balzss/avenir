@@ -2,39 +2,27 @@
 const questions = [
   {
     id: 'faq-1',
-    title: 'How do I know which pricing plan is right for me?',
+    title: 'Hány kép van benne az árban?',
     answer:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, voluptas ipsa quia excepturi, quibusdam natus exercitationem sapiente tempore labore voluptatem.',
+      'A megtervezett tereket annyi képen mutatjuk be, amennyi az adott helységek bemutatásához szükséges (általában 2-6 kép /helység).',
   },
   {
     id: 'faq-2',
-    title: 'How can I upgrade, downgrade, or cancel my plan?',
+    title: 'Mennyi idő, mire kézhez kapom a megrendelt képeket?',
     answer:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, voluptas ipsa quia excepturi, quibusdam natus exercitationem sapiente tempore labore voluptatem.',
+      'Az ingatlan méretétől függően 3-7 munkanap.',
   },
   {
     id: 'faq-3',
-    title: "What does 'lifetime access' mean exactly?",
+    title: 'Milyen információkra van szükség a tervezéshez?',
     answer:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, voluptas ipsa quia excepturi, quibusdam natus exercitationem sapiente tempore labore voluptatem.',
-  },
-  {
-    id: 'faq-4',
-    title: "What does 'free updates' mean exactly?",
-    answer:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, voluptas ipsa quia excepturi, quibusdam natus exercitationem sapiente tempore labore voluptatem.',
-  },
-  {
-    id: 'faq-5',
-    title: 'Do you offer a free trial?',
-    answer:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, voluptas ipsa quia excepturi, quibusdam natus exercitationem sapiente tempore labore voluptatem.',
-  },
-  {
-    id: 'faq-6',
-    title: 'How can I request support?',
-    answer:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, voluptas ipsa quia excepturi, quibusdam natus exercitationem sapiente tempore labore voluptatem.',
+      `
+      <b>Szükség van:</b>
+      <ol class="list-decimal list-inside">
+        <li>az ingatlan műszaki rajzaira (általában elég a kiviteli alaprajz)</li>
+        <li>a bemutatni kívánt terek meghatározására (pl. csak nappali-konyha, teljes ingatlan, stb.)</li>
+        <li>az egyik design opció kiválasztására</li>
+      </ol>`,
   },
 ];
 ---
@@ -43,7 +31,7 @@ const questions = [
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="grid gap-12 lg:grid-cols-3 lg:gap-8">
       <div>
-        <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Frequently asked questions</h2>
+        <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Gyakran ismételt kérdések</h2>
       </div>
       <div class="lg:col-span-2">
         <dl
@@ -88,9 +76,7 @@ const questions = [
                   </button>
                 </dt>
                 <dd class="pb-6 pr-6" id={question.id} x-show="isOpen" x-cloak x-collapse>
-                  <p class="text-primary-950/70 dark:text-primary-200/70 text-base">
-                    {question.answer}
-                  </p>
+                  <div class="text-primary-950/70 dark:text-primary-200/70 text-base" set:html={question.answer}> </div>
                 </dd>
               </div>
             ))

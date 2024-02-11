@@ -1,24 +1,20 @@
 ---
 const links = [
   {
-    ref: '01',
-    name: 'Home',
+    name: 'Főoldal',
     href: '/',
   },
   {
-    ref: '02',
-    name: 'About',
-    href: '/about',
+    name: 'Bemutatkozás',
+    href: '/bemutatkozas',
   },
   {
-    ref: '03',
-    name: 'Pricing',
-    href: '/pricing',
+    name: 'Árak',
+    href: '/arak',
   },
   {
-    ref: '04',
-    name: 'Contact',
-    href: '/contact',
+    name: 'Kapcsolat',
+    href: '/kapcsolat',
   },
 ];
 ---
@@ -99,15 +95,7 @@ const links = [
     x-collapse.duration.500ms
   >
     <div class="grid grid-cols-1 gap-16 pb-24 pt-6 lg:grid-cols-2 lg:pt-12">
-      <div
-        class="bg-primary-500/10 dark:bg-primary-400/10 hidden items-center justify-center rounded-3xl px-6 py-8 lg:flex"
-      >
-        <p
-          class="text-primary-950/70 dark:text-primary-200/70 max-w-sm text-xl italic leading-loose"
-        >
-          <span class="font-medium">Stone</span> is a premium Astro theme specially designed for
-          Business, Marketing, SaaS and Startup websites.
-        </p>
+      <div >
       </div>
 
       <!-- Navigation -->
@@ -120,7 +108,6 @@ const links = [
             >
               <div class="group-focus-visible:outline-primary-950 dark:group-focus-visible:outline-primary-200 flex flex-1 items-center justify-between rounded-3xl group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-2">
                 <div class="flex items-center gap-6">
-                  <span class="text-xs">{link.ref}</span>
                   <span class="group-hover:underline">{link.name}</span>
                 </div>
                 <svg
