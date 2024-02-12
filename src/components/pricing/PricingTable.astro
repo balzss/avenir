@@ -2,14 +2,14 @@
 const pricing = [
   {
     name: '3D-s alaprajz',
-    description: 'For development, staging, and small production projects.',
     periodicity: '/m²',
+    thumbnail: '/assets/kepek/design1/alaprajz.png',
     price: '350 Ft',
   },
   {
     name: 'Látványtervek',
-    description: 'For high-scale and mission critical projects.',
     periodicity: '/m²',
+    thumbnail: '/assets/kepek/design1/nappali.png',
     price: '3900 Ft',
   },
 ];
@@ -23,14 +23,13 @@ const pricing = [
           <div class="relative flex flex-col gap-8 rounded-3xl p-8 bg-primary-500/10 dark:bg-primary-400/10" >
             <div class="flex-1">
               <h2 class="text-xl font-medium">{item.name}</h2>
+              <img src={item.thumbnail} alt="" class="rounded-3xl my-8">
               <p class="mt-4 flex items-baseline">
                 <span class="text-4xl font-medium tracking-tight">{item.price}</span>
                 <span class="text-primary-950/70 dark:text-primary-200/70 ml-1 text-sm font-medium">
                   {item.periodicity}
                 </span>
               </p>
-              <p class="text-primary-950/70 dark:text-primary-200/70 mt-6">{item.description}</p>
-
             </div>
           </div>
         ))
