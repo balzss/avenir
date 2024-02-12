@@ -3,21 +3,18 @@ const testimonials = [
   {
     name: 'Rebecca Hayes',
     description: 'Designer',
-    image: '/assets/testimonial-1.webp',
     message:
       '“Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo expedita voluptas culpa sapiente alias molestiae. Numquam corrupti in laborum sed rerum et corporis.”',
   },
   {
     name: 'Rosa Spencer',
     description: 'Team Leader',
-    image: '/assets/testimonial-2.webp',
     message:
       '“Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo expedita voluptas culpa sapiente alias molestiae. Numquam corrupti in laborum sed rerum et corporis.”',
   },
   {
     name: 'Christina Upton',
     description: 'Manager',
-    image: '/assets/testimonial-3.webp',
     message:
       '“Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo expedita voluptas culpa sapiente alias molestiae. Numquam corrupti in laborum sed rerum et corporis.”',
   },
@@ -53,7 +50,6 @@ const testimonials = [
                 <p>{testimonial.message}</p>
               </blockquote>
               <figcaption class="flex flex-col gap-4">
-                <img class="mx-auto h-8 w-8 rounded-full" src={testimonial.image} alt="" />
                 <div class="text-center">
                   <div class="text-base font-medium">{testimonial.name}</div>
                   <div class="text-primary-950/70 dark:text-primary-200/70 text-sm">
