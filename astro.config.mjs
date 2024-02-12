@@ -8,6 +8,5 @@ export default defineConfig({
     viewTransitions: true,
   },
   integrations: [tailwind(), compress()],
-  site: 'https://balzss.github.io',
-  base: '/avenir',
+  site: 'https://avenirvision.hu',
 });
