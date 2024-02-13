@@ -21,6 +21,31 @@ const designOptions = [
 ];
 ---
 
+    <style>
+a {
+  position: relative;
+}
+    .img-overlay {
+  position: absolute;
+  color: #fafaf9;
+  height: auto;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.7) 81%);
+  margin-top: auto;
+  padding-inline: 20px;
+  padding-bottom: 16px;
+  padding-top: 32px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 15px;
+  opacity: 0.8;
+  transition: opacity 0.15s ease;
+}
+    </style>
+
 <section class="py-16 sm:py-20">
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="flex flex-col gap-12 sm:gap-16">
@@ -38,6 +63,9 @@ const designOptions = [
                 target="_blank"
               >
                 <img src={option.thumbnail} alt="" class="rounded-3xl">
+                <div class="img-overlay rounded-b-3xl">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-images"><path d="M18 22H4a2 2 0 0 1-2-2V6"/><path d="m22 13-1.296-1.296a2.41 2.41 0 0 0-3.408 0L11 18"/><circle cx="12" cy="8" r="2"/><rect width="16" height="16" x="6" y="2" rx="2"/></svg>
+                </div>
               </a>
             </div>
           ))
