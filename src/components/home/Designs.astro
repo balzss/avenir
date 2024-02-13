@@ -4,19 +4,19 @@ const designOptions = [
     step: '01',
       width: 1600,
       height: 1080,
-    thumbnail: `/assets/kepek/design1/0.jpg`,
+    thumbnail: `/assets/design1/0.jpg`,
   },
   {
     step: '02',
       width: 1600,
       height: 1080,
-    thumbnail: `/assets/kepek/design2/0.jpg`,
+    thumbnail: `/assets/design2/0.jpg`,
   },
   {
     step: '03',
       width: 1600,
       height: 1080,
-    thumbnail: `/assets/kepek/design3/0.jpg`,
+    thumbnail: `/assets/design3/0.jpg`,
   },
 ];
 ---
@@ -89,19 +89,13 @@ const designOptions = [
     });
     lightbox.addFilter('itemData', (itemData, index) => {
       if (index === 0) return itemData;
-      // if (g.irregulars && Object.keys(g.irregulars).includes(index.toString())) {
-      //   return {
-      //     src: `projects/${g.name}/render${index + 1}.jpg`,
-      //     width: g.irregulars[index.toString()].width,
-      //     height: g.irregulars[index.toString()].height,
-      //   };
-      // }
       return {
-        src: `/assets/kepek/${option.name}/${index}.jpg`,
+        src: `/assets/${option.name}/${index}.jpg`,
         width: option.width,
         height: option.height
       };
     });
+
     lightbox.init();
   });
 </script>

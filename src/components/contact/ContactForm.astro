@@ -3,7 +3,7 @@
     <div class="grid gap-12 lg:grid-cols-2 lg:gap-8">
       <div class="flex flex-col gap-4 sm:gap-6">
         <h2 class="text-3xl font-bold sm:text-4xl">Kérjen árajánlatot</h2>
-        <p class="text-primary-950/70 dark:text-primary-200/70 max-w-lg text-lg sm:text-xl">
+        <p class="text-primary-950/70 max-w-lg text-lg sm:text-xl">
           Ha árajánlatot kérne, vagy csak többet szeretne tudni a szolgáltatásainkról, keressen minket bizalommal!
         </p>
       </div>
@@ -16,7 +16,7 @@
             name="full-name"
             id="full-name"
             autocomplete="name"
-            class="hover:ring-primary-600 focus:ring-primary-600 dark:hover:ring-primary-400 dark:focus:ring-primary-400 bg-primary-50 dark:bg-primary-950 ring-primary-900/40 dark:ring-primary-200/40 placeholder:text-primary-950/60 dark:placeholder:text-primary-200/60 block w-full appearance-none rounded-md border-0 px-4 py-4 text-base ring-1 transition focus:outline-none focus:ring-2"
+            class="hover:ring-primary-600 focus:ring-primary-600 bg-primary-50 ring-primary-900/40 placeholder:text-primary-950/60 block w-full appearance-none rounded-md border-0 px-4 py-4 text-base ring-1 transition focus:outline-none focus:ring-2"
             placeholder="Név"
           />
         </div>
@@ -29,7 +29,7 @@
             name="email"
             id="email"
             autocomplete="email"
-            class="hover:ring-primary-600 focus:ring-primary-600 dark:hover:ring-primary-400 dark:focus:ring-primary-400 bg-primary-50 dark:bg-primary-950 ring-primary-900/40 dark:ring-primary-200/40 placeholder:text-primary-950/60 dark:placeholder:text-primary-200/60 block w-full appearance-none rounded-md border-0 px-4 py-4 text-base ring-1 transition focus:outline-none focus:ring-2"
+            class="hover:ring-primary-600 focus:ring-primary-600 bg-primary-50 ring-primary-900/40 placeholder:text-primary-950/60 block w-full appearance-none rounded-md border-0 px-4 py-4 text-base ring-1 transition focus:outline-none focus:ring-2"
             placeholder="Email"
           />
         </div>
@@ -40,21 +40,19 @@
             name="message"
             id="message"
             rows="3"
-            class="hover:ring-primary-600 focus:ring-primary-600 dark:hover:ring-primary-400 dark:focus:ring-primary-400 bg-primary-50 dark:bg-primary-950 ring-primary-900/40 dark:ring-primary-200/40 placeholder:text-primary-950/60 dark:placeholder:text-primary-200/60 block w-full appearance-none rounded-md border-0 px-4 py-4 text-base ring-1 transition focus:outline-none focus:ring-2"
+            class="hover:ring-primary-600 focus:ring-primary-600 bg-primary-50 ring-primary-900/40 placeholder:text-primary-950/60 block w-full appearance-none rounded-md border-0 px-4 py-4 text-base ring-1 transition focus:outline-none focus:ring-2"
             placeholder="Üzenet"></textarea>
         </div>
         <!-- File input -->
         <div>
-  <input
-    class="relative m-0 block w-full min-w-0 flex-auto rounded border bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:file:bg-neutral-700 dark:file:text-neutral-100 dark:focus:border-primary"
-    type="file"
-    multiple />
-</div>
+          <label class="text-sm font-medium text-gray-900 block mb-2" for="user_avatar">Kép csatolása</label>
+<input class="block w-full cursor-pointer bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:border-transparent text-sm rounded-lg" aria-describedby="user_avatar_help" id="user_avatar" type="file">
+        </div>
 
 
         <div>
           <button
-            class="bg-primary-600 dark:bg-primary-400 hover:bg-primary-700 dark:hover:bg-primary-300 focus-visible:outline-primary-600 dark:focus-visible:outline-primary-400 dark:text-primary-950 inline-flex items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-bold text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+            class="bg-primary-600 hover:bg-primary-700 focus-visible:outline-primary-600 inline-flex items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-bold text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
             type="submit"
           >
             Küldés
