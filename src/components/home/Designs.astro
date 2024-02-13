@@ -2,24 +2,21 @@
 const designOptions = [
   {
     step: '01',
-    name: 'Design',
-    thumbnail: `/assets/kepek/design1/nappali.png`,
-    description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+      width: 1600,
+      height: 1080,
+    thumbnail: `/assets/kepek/design1/0.jpg`,
   },
   {
     step: '02',
-    name: 'Develop',
-    thumbnail: `/assets/kepek/design2/nappali.png`,
-    description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+      width: 1600,
+      height: 1080,
+    thumbnail: `/assets/kepek/design2/0.jpg`,
   },
   {
     step: '03',
-    name: 'Maintain',
-    thumbnail: `/assets/kepek/design3/nappali1.jpg`,
-    description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+      width: 1600,
+      height: 1080,
+    thumbnail: `/assets/kepek/design3/0.jpg`,
   },
 ];
 ---
@@ -28,12 +25,20 @@ const designOptions = [
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="flex flex-col gap-12 sm:gap-16">
       <h2 class="text-3xl font-bold sm:text-4xl">Design opciók</h2>
-      <div class="grid gap-8 lg:grid-cols-3">
+      <div class="grid gap-8 lg:grid-cols-3" id="gallery">
         {
           designOptions.map((option) => (
-            <div class="bg-primary-500/10 dark:bg-primary-400/10 flex flex-col gap-12 rounded-3xl px-6 py-8">
+            <div class="bg-primary-500/10 dark:bg-primary-400/10 flex flex-col gap-12 rounded-3xl px-6 py-8" id={`gallery-${option.step}`}>
               <p class="text-sm">{option.step}</p>
-              <img src={option.thumbnail} alt="" class="rounded-3xl">
+              <a 
+                href={option.thumbnail}
+                data-pswp-width={option.width}
+                data-pswp-height={option.height}
+                data-cropped="true"
+                target="_blank"
+              >
+                <img src={option.thumbnail} alt="" class="rounded-3xl">
+              </a>
             </div>
           ))
         }
@@ -41,3 +46,62 @@ const designOptions = [
     </div>
   </div>
 </section>
+
+<script>
+  const designOptions = [
+    {
+      step: '01',
+      name: 'design1',
+      width: 1600,
+      height: 1080,
+      thumbnail: `/assets/kepek/design1/0.jpg`,
+      len: 8,
+    },
+    {
+      step: '02',
+      name: 'design2',
+      width: 1600,
+      height: 1080,
+      len: 8,
+      thumbnail: `/assets/kepek/design2/0.jpg`,
+    },
+    {
+      step: '03',
+      name: 'design3',
+      width: 1600,
+      height: 1080,
+      thumbnail: `/assets/kepek/design3/0.jpg`,
+      len: 8,
+    },
+  ];
+  import PhotoSwipeLightbox from 'photoswipe/lightbox';
+  import 'photoswipe/style.css';
+
+  designOptions.forEach((option) => {
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: `#gallery-${option.step}`,
+      children: 'a',
+      loop: true,
+      pswpModule: () => import('photoswipe')
+    });
+    lightbox.addFilter('numItems', (numItems) => {
+      return option.len;
+    });
+    lightbox.addFilter('itemData', (itemData, index) => {
+      if (index === 0) return itemData;
+      // if (g.irregulars && Object.keys(g.irregulars).includes(index.toString())) {
+      //   return {
+      //     src: `projects/${g.name}/render${index + 1}.jpg`,
+      //     width: g.irregulars[index.toString()].width,
+      //     height: g.irregulars[index.toString()].height,
+      //   };
+      // }
+      return {
+        src: `/assets/kepek/${option.name}/${index}.jpg`,
+        width: option.width,
+        height: option.height
+      };
+    });
+    lightbox.init();
+  });
+</script>
