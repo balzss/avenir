@@ -6,6 +6,7 @@ import compress from 'astro-compress';
 export default defineConfig({
   experimental: {
     viewTransitions: true,
+    assets: true,
   },
   integrations: [tailwind(), compress()],
   site: 'https://avenirvision.hu',

@@ -1,3 +1,7 @@
+---
+import { Image } from 'astro:assets';
+import heroImg from '../../assets/hero.jpg';
+---
 <section class="py-16 sm:py-20">
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="flex flex-col gap-16">
@@ -17,10 +21,10 @@
           Árak
         </a>
       </div>
-      <img
+      <Image
         class="h-auto w-full rounded-3xl"
-        src="/assets/design3/1.jpg"
-        alt="Hero picture"
+        src={heroImg}
+        alt="Avenir Vision render"
       />
     </div>
   </div>

@@ -1,22 +1,35 @@
 ---
+import { Image } from 'astro:assets';
+import thumbnail1 from '../../assets/thumbnail1.jpg';
+import thumbnail2 from '../../assets/thumbnail2.jpg';
+import thumbnail3 from '../../assets/thumbnail3.jpg';
 const designOptions = [
   {
     step: '01',
-      width: 1600,
-      height: 1080,
-    thumbnail: `/assets/design1/0.jpg`,
+    name: 'design1',
+    width: 1600,
+    height: 1080,
+    thumbnail: thumbnail1,
+    href: '/assets/design1/0.jpg',
+    len: 8,
   },
   {
     step: '02',
-      width: 1600,
-      height: 1080,
-    thumbnail: `/assets/design2/0.jpg`,
+    name: 'design2',
+    width: 1600,
+    height: 1080,
+    thumbnail: thumbnail2,
+    href: '/assets/design2/0.jpg',
+    len: 8,
   },
   {
     step: '03',
-      width: 1600,
-      height: 1080,
-    thumbnail: `/assets/design3/0.jpg`,
+    name: 'design3',
+    width: 1600,
+    height: 1080,
+    thumbnail: thumbnail3,
+    href: '/assets/design3/0.jpg',
+    len: 8,
   },
 ];
 ---
@@ -56,13 +69,13 @@ a {
             <div class="bg-primary-500/10 dark:bg-primary-400/10 flex flex-col gap-12 rounded-3xl px-6 py-8" id={`gallery-${option.step}`}>
               <p class="text-sm">{option.step}</p>
               <a 
-                href={option.thumbnail}
+                href={option.href}
                 data-pswp-width={option.width}
                 data-pswp-height={option.height}
                 data-cropped="true"
                 target="_blank"
               >
-                <img src={option.thumbnail} alt="" class="rounded-3xl">
+                <Image src={option.thumbnail} alt="" class="rounded-3xl"/>
                 <div class="img-overlay rounded-b-3xl">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-images"><path d="M18 22H4a2 2 0 0 1-2-2V6"/><path d="m22 13-1.296-1.296a2.41 2.41 0 0 0-3.408 0L11 18"/><circle cx="12" cy="8" r="2"/><rect width="16" height="16" x="6" y="2" rx="2"/></svg>
                 </div>
@@ -75,42 +88,16 @@ a {
   </div>
 </section>
 
-<script>
-  const designOptions = [
-    {
-      step: '01',
-      name: 'design1',
-      width: 1600,
-      height: 1080,
-      thumbnail: `/assets/kepek/design1/0.jpg`,
-      len: 8,
-    },
-    {
-      step: '02',
-      name: 'design2',
-      width: 1600,
-      height: 1080,
-      len: 8,
-      thumbnail: `/assets/kepek/design2/0.jpg`,
-    },
-    {
-      step: '03',
-      name: 'design3',
-      width: 1600,
-      height: 1080,
-      thumbnail: `/assets/kepek/design3/0.jpg`,
-      len: 8,
-    },
-  ];
-  import PhotoSwipeLightbox from 'photoswipe/lightbox';
-  import 'photoswipe/style.css';
+<script is:inline type="module" define:vars={{ designOptions }}>
+  import PhotoSwipeLightbox from '/photoswipe/dist/photoswipe-lightbox.esm.js';
+  import PhotoSwipe from '/photoswipe/dist/photoswipe.esm.js';
 
   designOptions.forEach((option) => {
     const lightbox = new PhotoSwipeLightbox({
       gallery: `#gallery-${option.step}`,
       children: 'a',
       loop: true,
-      pswpModule: () => import('photoswipe')
+      pswpModule: PhotoSwipe,
     });
     lightbox.addFilter('numItems', (numItems) => {
       return option.len;

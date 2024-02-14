@@ -1,15 +1,19 @@
 ---
+import { Image } from 'astro:assets';
+import alaprajzImg from '../../assets/design1/7.jpg';
+import latvanytervImg from '../../assets/design1/0.jpg';
 const pricing = [
   {
     name: '3D-s alaprajz',
     periodicity: '/m²',
-    thumbnail: '/assets/design1/7.jpg',
+    thumbnail: alaprajzImg,
     price: '350 Ft',
   },
   {
     name: 'Látványtervek',
     periodicity: '/m²',
-    thumbnail: '/assets/design1/0.jpg',
+    thumbnail_old: '/assets/design1/0.jpg',
+    thumbnail: latvanytervImg,
     price: '3900 Ft',
   },
 ];
@@ -29,7 +33,7 @@ const pricing = [
                   {item.periodicity}
                 </span>
               </p>
-              <img src={item.thumbnail} alt="" class="rounded-3xl my-8">
+              <Image src={item.thumbnail} class="rounded-3xl my-8" alt={item.name}/>
             </div>
           </div>
         ))
