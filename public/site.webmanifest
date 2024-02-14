@@ -1,6 +1,6 @@
 {
-    "name": "Avenir Vision",
-    "short_name": "Avenir Vision",
+    "name": "avenir",
+    "short_name": "avenir",
     "icons": [
        {
           "src": "/assets/favicon.png",

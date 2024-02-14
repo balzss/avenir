@@ -1,5 +1,5 @@
 {
-  "name": "Avenir Vision",
+  "name": "avenir",
   "homepage": "https://avenirvision.hu",
   "type": "module",
   "version": "1.0.0",
@@ -14,6 +14,7 @@
     "@alpinejs/collapse": "3.12.3",
     "@astrojs/tailwind": "4.0.0",
     "@fontsource-variable/inter": "^5.0.16",
+    "@sendgrid/mail": "^8.1.1",
     "@types/alpinejs": "3.7.2",
     "alpinejs": "3.12.3",
     "astro": "2.10.13",

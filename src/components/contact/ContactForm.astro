@@ -7,14 +7,14 @@
           Ha árajánlatot kérne, vagy csak többet szeretne tudni a szolgáltatásainkról, keressen minket bizalommal!
         </p>
       </div>
-      <form action="#" method="POST" class="mt-3 flex flex-col gap-y-6">
+      <form method="GET" class="mt-3 flex flex-col gap-y-6" name="contact" id="contact">
         <!-- Full name input -->
         <div>
-          <label for="full-name" class="sr-only">Full name</label>
+          <label for="full-name" class="sr-only">Név</label>
           <input
             type="text"
-            name="full-name"
-            id="full-name"
+            name="name"
+            id="name"
             autocomplete="name"
             class="hover:ring-primary-600 focus:ring-primary-600 bg-primary-50 ring-primary-900/40 placeholder:text-primary-950/60 block w-full appearance-none rounded-md border-0 px-4 py-4 text-base ring-1 transition focus:outline-none focus:ring-2"
             placeholder="Név"
@@ -43,13 +43,6 @@
             class="hover:ring-primary-600 focus:ring-primary-600 bg-primary-50 ring-primary-900/40 placeholder:text-primary-950/60 block w-full appearance-none rounded-md border-0 px-4 py-4 text-base ring-1 transition focus:outline-none focus:ring-2"
             placeholder="Üzenet"></textarea>
         </div>
-        <!-- File input -->
-        <div>
-          <label class="text-sm font-medium text-gray-900 block mb-2" for="user_avatar">Kép csatolása</label>
-<input class="block w-full cursor-pointer bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:border-transparent text-sm rounded-lg" aria-describedby="user_avatar_help" id="user_avatar" type="file">
-        </div>
-
-
         <div>
           <button
             class="bg-primary-600 hover:bg-primary-700 focus-visible:outline-primary-600 inline-flex items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-bold text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
@@ -62,3 +55,48 @@
     </div>
   </div>
 </section>
+
+<script>
+  const form = document.getElementById('contact');
+  var xhr = new XMLHttpRequest();
+
+  const handleFormSubmission = (event) => {
+    // prevent page from reloading
+    event.preventDefault();
+
+    const data = event.target.elements;
+
+    // put into JSON object
+    const formData = {
+      name: data.name.value,
+      email: data.email.value,
+      message: data.message.value,
+    };
+    console.log(formData)
+
+    // Set POST request method to our netlify function
+    xhr.open('POST', '.netlify/functions/contact');
+
+    // Set the request headers
+    xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+
+    // Send the data as JSON to our netlify function
+    xhr.send(JSON.stringify(formData));
+
+    // Handle the response
+    xhr.onload = function () {
+      const response = JSON.parse(xhr.responseText);
+
+      if (xhr.status === 200) {
+        // The request was successful
+        console.log('success');
+      } else {
+        // The request failed
+        console.log('fail');
+      }
+    };
+  };
+
+  // add the submission event listener
+  form.addEventListener('submit', handleFormSubmission, true);
+</script>
