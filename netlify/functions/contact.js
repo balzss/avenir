@@ -14,7 +14,7 @@ const handler = async function (event) {
   const data = {
     to: 'info@avenirvision.hu', // Change to your recipient (your email in this case)
     from: 'info@avenirvision.hu', // Change to your verified sender
-    subject: `New message from ${name} (${email})`,
+    subject: `Új üzenet tőle: ${name} (${email})`,
     html: `<p>${message}</p>`,
   };
 
@@ -23,17 +23,17 @@ const handler = async function (event) {
     return {
       statusCode: 200,
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        msg: "Message sent successfully",
+        msg: 'Message sent successfully',
       }),
     };
   } catch (err) {
     return {
       statusCode: err.code,
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({ msg: err.message }),
     };

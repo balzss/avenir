@@ -18,6 +18,7 @@
             autocomplete="name"
             class="hover:ring-primary-600 focus:ring-primary-600 bg-primary-50 ring-primary-900/40 placeholder:text-primary-950/60 block w-full appearance-none rounded-md border-0 px-4 py-4 text-base ring-1 transition focus:outline-none focus:ring-2"
             placeholder="Név"
+            required
           />
         </div>
 
@@ -31,6 +32,7 @@
             autocomplete="email"
             class="hover:ring-primary-600 focus:ring-primary-600 bg-primary-50 ring-primary-900/40 placeholder:text-primary-950/60 block w-full appearance-none rounded-md border-0 px-4 py-4 text-base ring-1 transition focus:outline-none focus:ring-2"
             placeholder="Email"
+            required
           />
         </div>
         <!-- Message textarea -->
@@ -41,8 +43,11 @@
             id="message"
             rows="3"
             class="hover:ring-primary-600 focus:ring-primary-600 bg-primary-50 ring-primary-900/40 placeholder:text-primary-950/60 block w-full appearance-none rounded-md border-0 px-4 py-4 text-base ring-1 transition focus:outline-none focus:ring-2"
-            placeholder="Üzenet"></textarea>
+            placeholder="Üzenet"
+            required
+          />
         </div>
+        <p id="confirm-msg"></p>
         <div>
           <button
             class="bg-primary-600 hover:bg-primary-700 focus-visible:outline-primary-600 inline-flex items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-bold text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
@@ -58,7 +63,7 @@
 
 <script>
   const form = document.getElementById('contact');
-  var xhr = new XMLHttpRequest();
+  const confirmMsg = document.getElementById('confirm-msg')
 
   const handleFormSubmission = (event) => {
     // prevent page from reloading
@@ -73,27 +78,24 @@
       message: data.message.value,
     };
 
-    // Set POST request method to our netlify function
-    xhr.open('POST', '/.netlify/functions/contact');
-
-    // Set the request headers
-    xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-
-    // Send the data as JSON to our netlify function
-    xhr.send(JSON.stringify(formData));
-
-    // Handle the response
-    xhr.onload = function () {
-      const response = JSON.parse(xhr.responseText);
-
-      if (xhr.status === 200) {
-        // The request was successful
-        console.log('success');
-      } else {
-        // The request failed
-        console.log('fail');
-      }
-    };
+    fetch('/.netlify/functions/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData)
+    })
+      .then((response) => {
+        if (response.ok) {
+          // The request was successful
+          confirmMsg.innerText = 'Üzenet sikeresen elküldve! Hamarosan felvesszük önnel a kapcsolatot.'
+          confirmMsg.className = 'text-success-700'
+        } else {
+          // The request failed
+          confirmMsg.innerText = 'Valami hiba történt, kérjük próbálkozzon újból!'
+          confirmMsg.className = 'text-error-700'
+        }
+      })
   };
 
   // add the submission event listener
