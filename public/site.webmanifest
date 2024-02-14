@@ -1,19 +1,14 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Avenir Vision",
+    "short_name": "Avenir Vision",
     "icons": [
        {
-          "src": "/android-chrome-192x192.png",
-          "sizes": "192x192",
+          "src": "/assets/favicon.png",
+          "sizes": "64x64",
           "type": "image/png"
-       },
-       {
-        "src": "/android-chrome-512x512.png",
-        "sizes": "512x512",
-        "type": "image/png"
-        }
+       }
     ],
-    "theme_color": "#FFFFFF",
-    "background_color": "#FFFFFF",
+    "theme_color": "#fafaf9",
+    "background_color": "#fafaf9",
     "display": "standalone"
  }
