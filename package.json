@@ -1,5 +1,5 @@
 {
-  "name": "avenir",
+  "name": "Avenir Vision",
   "homepage": "https://avenirvision.hu",
   "type": "module",
   "version": "1.0.0",
@@ -8,7 +8,6 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "deploy": "gh-pages -d dist",
     "astro": "astro"
   },
   "dependencies": {
