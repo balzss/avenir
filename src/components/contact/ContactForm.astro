@@ -72,10 +72,9 @@
       email: data.email.value,
       message: data.message.value,
     };
-    console.log(formData)
 
     // Set POST request method to our netlify function
-    xhr.open('POST', '.netlify/functions/contact');
+    xhr.open('POST', '/.netlify/functions/contact');
 
     // Set the request headers
     xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
