@@ -1,6 +1,5 @@
 ---
 import '@fontsource-variable/inter';
-import { ViewTransitions } from 'astro:transitions';
 import Footer from '../components/layout/Footer.astro';
 import Header from '../components/layout/Header.astro';
 
@@ -23,7 +22,6 @@ const { description, title } = Astro.props;
     <link rel="icon" type="image/png" href="/assets/favicon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <title>{title}</title>
-    <ViewTransitions />
     <link rel="stylesheet" href="/photoswipe/photoswipe.css">
   </head>
   <body
