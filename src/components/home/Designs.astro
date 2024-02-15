@@ -92,25 +92,27 @@ a {
   import PhotoSwipeLightbox from '/photoswipe/photoswipe-lightbox.esm.min.js';
   import PhotoSwipe from '/photoswipe/photoswipe.esm.min.js';
 
-  designOptions.forEach((option) => {
-    const lightbox = new PhotoSwipeLightbox({
-      gallery: `#gallery-${option.step}`,
-      children: 'a',
-      loop: true,
-      pswpModule: PhotoSwipe,
-    });
-    lightbox.addFilter('numItems', (numItems) => {
-      return option.len;
-    });
-    lightbox.addFilter('itemData', (itemData, index) => {
-      if (index === 0) return itemData;
-      return {
-        src: `/assets/${option.name}/${index}.jpg`,
-        width: option.width,
-        height: option.height
-      };
-    });
+  document.addEventListener('DOMContentLoaded', function() {
+    designOptions.forEach((option) => {
+      const lightbox = new PhotoSwipeLightbox({
+        gallery: `#gallery-${option.step}`,
+        children: 'a',
+        loop: true,
+        pswpModule: PhotoSwipe,
+      });
+      lightbox.addFilter('numItems', (numItems) => {
+        return option.len;
+      });
+      lightbox.addFilter('itemData', (itemData, index) => {
+        if (index === 0) return itemData;
+        return {
+          src: `/assets/${option.name}/${index}.jpg`,
+          width: option.width,
+          height: option.height
+        };
+      });
 
-    lightbox.init();
+      lightbox.init();
+    });
   });
 </script>
